@@ -1,0 +1,25 @@
+clear
+
+wget https://raw.githubusercontent.com/hunmai/ovpn-ssh/refs/heads/main/DNS/autodns
+
+chmod +x autodns
+
+echo "
+╭━━━━━━━━━━━━━━━━━━━━━━━╮"
+echo " ┈┣  กำหนด DNS ที่จะเปลี่ยน  "
+echo " ╰━━━━━━━━━━━━━━━━━━━━━━━╯"
+read -p " : " dns
+
+./autodns saywahvpn.xyz $dns dawrueng.vpn@gmail.com 7143c8aa54b8f8e7fc249be5c3e17d46215c9
+
+clear
+echo "
+ตั้งค่า DNS เสร็จเรียบร้อย
+ข้อมูล DNS
+SV_IP : $(wget -qO- ipv4.icanhazip.com)
+DNS.  : $dns
+"
+curl -X POST -H 'Authorization: Bearer bed7Qk5HnCaYHLnA2jDgTWyzNJYMbrsC4ao1HMA7gj2' -F 'message='"
+ระบบ: $(printf '%-14s' "$system")
+IP : $(wget -qO- ipv4.icanhazip.com)
+DNS : $dns       "'' https://notify-api.line.me/api/notify > /dev/null 2>&1
